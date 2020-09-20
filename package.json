@@ -1,0 +1,33 @@
+{
+  "name": "ap-simple-stream",
+  "version": "1.0.0",
+  "description": "AP Simple Stream Technical Task",
+  "author": "Alex Pilugin",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "test": "jest"
+  },
+  "engines": {
+    "node": "10"
+  },
+  "dependencies": {
+    "nuxt": "^2.12.2",
+    "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "@nuxtjs/vuetify": "^1.11.0"
+  },
+  "devDependencies": {
+    "@babel/runtime-corejs3": "^7.9.6",
+    "babel-jest": "^26.0.1",
+    "core-js": "^3.6.5",
+    "cross-env": "^7.0.2",
+    "@vue/test-utils": "^1.0.0-beta.27",
+    "jest": "^26.0.1",
+    "nodemon": "^2.0.3",
+    "vue-jest": "^4.0.0-0"
+  }
+}
