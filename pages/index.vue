@@ -9,10 +9,6 @@
       sm8
       md6
     >
-      <div class="text-center">
-        <logo />
-        <vuetify-logo />
-      </div>
       <v-card>
         <v-card-title class="headline">
           Welcome to the Vuetify + Nuxt.js template
@@ -69,7 +65,7 @@
           <v-btn
             color="primary"
             nuxt
-            to="/inspire"
+            to="/video"
           >
             Continue
           </v-btn>
@@ -84,6 +80,7 @@ import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
 
 export default {
+  name: "video-page", //for vue-dev-tools
   components: {
     Logo,
     VuetifyLogo

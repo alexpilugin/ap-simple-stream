@@ -1,7 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  mode: 'spa',
+  ssr: false,
   target: 'static',
   vue: {
     config: {
@@ -32,6 +32,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '~assets/styles/main.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -78,6 +79,13 @@ export default {
         }
       }
     }
+  },
+  pageTransition: {
+    name: "page", //css class: '~assets/styles/main.css'
+    mode: "out-in"
+  },
+  router: {
+    linkActiveClass: 'nuxt-active-link'
   },
   /*
   ** Build configuration
