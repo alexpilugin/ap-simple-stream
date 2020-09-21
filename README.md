@@ -2,6 +2,10 @@
 
 > AP Simple Stream Technical Task
 
+![Screenshot](https://github.com/alexpilugin/ap-simple-stream/blob/master/assets/Screenshot.png "Screenshot")
+
+![Jest Test Errors](https://github.com/alexpilugin/ap-simple-stream/blob/master/assets/jest-test-error.png "Jest Test Errors")
+
 ## Build Setup
 
 ```bash
