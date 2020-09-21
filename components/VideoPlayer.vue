@@ -27,7 +27,7 @@ export default {
   },
   mounted() {
     this.videoPlayer = this.$refs["video"];
-    if(this.isPlaying) this.videoPlayer.play();
+    if(this.videoPlayer && this.isPlaying) this.videoPlayer.play();
   },
   watch: {
     isPlaying(mode) {
