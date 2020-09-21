@@ -31,10 +31,12 @@ export default {
   methods: {
     ...mapActions({
       selectMovie: "store/selectMovie",
+      showPoster: 'store/showPoster'
     }),
     navigate(movie, index) {
       console.log("navigate: " + movie.title);
       this.selectMovie(index);
+      this.showPoster(true);
       // with query
       this.$router.push({ 
         path: 'video', 

@@ -8,12 +8,16 @@ export const EVENTS = {
   TRIGGER_RIGHT_DRAWER: 'TRIGGER_RIGHT_DRAWER',
   SET_LOADING: 'SET_LOADING',
   UPDATE_DATA: 'UPDATE_DATA',
-  SELECT_MOVIE: 'SELECT_MOVIE'
+  SELECT_MOVIE: 'SELECT_MOVIE',
+  PLAY_MOVIE: 'PLAY_MOVIE',
+  SHOW_POSTER: 'SHOW_POSTER'
 }
 
 export const state = () => ({
   movies: [],
   selectedMovie: undefined,
+  isPlaying: false,
+  isShowingPoster: false,
   appTitle: "A.P. Technical Test",
   rightDrawerIsOpen: false,
   menuItems: [
@@ -29,7 +33,12 @@ export const getters = {
   getRightDrawer: (state) => state.rightDrawerIsOpen,
   getRightDrawerMenus: (state) => state.menuItems,
   getLoadingStatus: (state) => state.loading,
-  isDarkThemeInUse: (state) => state.isDarkTheme
+  isDarkThemeInUse: (state) => state.isDarkTheme,
+  getPlayBtnSrc: (state) => {
+    return state.isPlaying 
+      ? "http://hybridtv.ss7.tv/techtest/assets/icons/btn-pause.png"
+      : "http://hybridtv.ss7.tv/techtest/assets/icons/btn-play.png"
+  }
 }
 
 export const mutations = {
@@ -49,7 +58,13 @@ export const mutations = {
   },
   [EVENTS.SELECT_MOVIE]: (state, index) => {
     if (index >= 0) state.selectedMovie = state.movies[index];  
-  }
+  },
+  [EVENTS.PLAY_MOVIE]: (state, mode) => {
+    state.isPlaying = mode; 
+  },
+  [EVENTS.SHOW_POSTER]: (state, mode) => {
+    state.isShowingPoster = mode; 
+  },
 }
 
 export const actions = {
@@ -80,6 +95,14 @@ export const actions = {
   selectMovie: (context, index) => {
     if (devMode) console.log("Action: store/selectMovie");
     context.commit(EVENTS.SELECT_MOVIE, index);
+  },
+  playMovie: (context, mode) => {
+    if (devMode) console.log("Action: store/playMovie"); 
+    context.commit(EVENTS.PLAY_MOVIE, mode); 
+  },
+  showPoster: (context, mode) => {
+    if (devMode) console.log("Action: store/showPoster"); 
+    context.commit(EVENTS.SHOW_POSTER, mode); 
   },
   triggerRightDrawer: (context, isOpen) => {
     if (devMode) console.log("Action: store/triggerRightDrawer");

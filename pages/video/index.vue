@@ -12,17 +12,18 @@
     </v-flex>
 
     <v-flex>
-      <v-card elevation="24" :max-width="480">
-        <!--
+      <v-card elevation="24" :max-width="480" v-if="selectedMovie">
         <v-img
-          v-if="selectedMovie"
-          height="200px"
-          class="white--text align-end"
+          v-if="isShowingPoster"
+          height="600px"
+          class="white--text align-end poster-img"
           :src="selectedMovie.poster"
-        >
-        </v-img>
-        -->
-        <v-container fluid class="pt-0">
+        ></v-img>
+        <!-- play button -->
+        <div v-if="isShowingPoster" id="playbutton" @click="play()" class="centered">
+          <img id="playbuttonImg" :src="playBtnSrc" alt="Play" />
+        </div>
+        <v-container fluid class="pt-0" v-if="!isShowingPoster">
           <VideoPlayer />
         </v-container>
       </v-card>
@@ -39,10 +40,36 @@ export default {
   components: {
     VideoPlayer,
   },
+  data() {
+    return {
+      playBtnSrc: "http://hybridtv.ss7.tv/techtest/assets/icons/btn-play.png",
+    };
+  },
   computed: {
     ...mapState({
       selectedMovie: (state) => state.store.selectedMovie,
+      isShowingPoster: (state) => state.store.isShowingPoster,
+    })
+  },
+  methods: {
+    ...mapActions({
+      showPoster: 'store/showPoster',
+      playMovie: 'store/playMovie',
     }),
+    play() {
+      this.showPoster(false);
+      this.playMovie(true);
+      console.log("play() ....");
+    }
   },
 };
 </script>
+
+<style scoped>
+.poster-img {
+  margin: 40px;
+}
+.poster-img:focus {
+ border: 2px solid #FFD700;
+}
+</style>
