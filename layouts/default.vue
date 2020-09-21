@@ -43,7 +43,7 @@
 <script>
 import Navbar from "@/components/Navbar.vue";
 import BottomFooter from "@/components/BottomFooter.vue";
-import { mapGetters } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
   components: {
@@ -56,10 +56,30 @@ export default {
       rightDrawer: false
     };
   },
+  created() {
+    if(!this.movies || !this.movies.length || !this.movies.length <= 0) {
+      this.loadData();
+    }
+  },
   computed: {
+    ...mapState({
+      movies: (state) => state.store.movies
+    }),
     ...mapGetters({
       getNavMenu: "store/getRightDrawerMenus",
     }),
   },
+  methods: {
+    ...mapActions({
+      loadData: 'store/loadData'
+    }),
+    navigate(route) {
+      const self = this;
+      setTimeout(function () {
+        //give time for animation
+        self.$router.push({ path: route });
+      }, 300);
+    },
+  }
 };
 </script>
